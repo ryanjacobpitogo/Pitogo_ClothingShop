@@ -28,8 +28,9 @@ export const ShopProvider = ( props : ShopProviderProps ) => {
   
     const updatePrice = (products: [] = []) => {
       let total = 0;
-      products.forEach((product: {price: number}) => (total += product.price));
-  
+      products.forEach((product: Product) => total += product.price * product.qty);
+      console.log("totes",total);
+
       dispatch(update(total));
       
     };

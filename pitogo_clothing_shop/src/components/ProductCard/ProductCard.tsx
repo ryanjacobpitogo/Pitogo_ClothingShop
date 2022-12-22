@@ -12,7 +12,7 @@ import { Product } from '../../models';
 import { useEffect, useState } from 'react';
 import useShop from '../../contexts/shopProvider';
 
-export const ProductCard = ({ name, imageUrl, price }: Product) => {
+export const ProductCard = ({ name, imageUrl, price, qty }: Product) => {
   const { cart_products, wish_products, addToCart, removeFromCart, addToWish, removeFromWish } = useShop();
   const [isInCart, setIsInCart] = useState(false);
   const [isInWish, setIsInWish] = useState(false);
@@ -26,7 +26,7 @@ export const ProductCard = ({ name, imageUrl, price }: Product) => {
   }, [cart_products, wish_products, name]);
 
   const handleCart = () => {
-    const product = { name, imageUrl, price };
+    const product = { name, imageUrl, price, qty };
 
     isInCart ? removeFromCart(product) : addToCart(product);
     
