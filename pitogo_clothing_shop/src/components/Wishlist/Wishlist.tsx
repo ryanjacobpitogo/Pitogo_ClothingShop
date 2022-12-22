@@ -3,13 +3,12 @@ import { ProductCard } from '../ProductCard';
 import { ProductsWrapper, Title } from './Wishlist.styled';
 
 export const Wishlist = () => {
-    const { products, total } = useShop();
+    const { wish_products } = useShop();
     
     return (
       <>
-        <Title>Your cart total is {total}.00$</Title>
         <ProductsWrapper>
-          {products.map((product, index) => (
+          {wish_products.map((product, index) => (
             <ProductCard {...product} key={index} />
           ))}
         </ProductsWrapper>

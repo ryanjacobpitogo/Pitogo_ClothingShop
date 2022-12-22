@@ -2,16 +2,22 @@ import { Products } from "../../components/Products";
 import { Product } from "../../models";
 
 
-export type CartState = {
-    products: Product[];
+export type ShopState = {
+    cart_products: Product[];
+    wish_products: Product[];
     total: number;
     addToCart: any;
     removeFromCart: any;
+    addToWish: any;
+    removeFromWish: any;
 };
 
-export const initCartState = {
-    products: [],
+export const initShopState = {
+    cart_products: [],
+    wish_products: [],
     total: 0,
     addToCart: null,
-    removeFromCart: null
+    removeFromCart: null,
+    addToWish: null,
+    removeFromWish: null,
 };

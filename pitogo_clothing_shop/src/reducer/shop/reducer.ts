@@ -1,27 +1,38 @@
-import { CartAction, CartActionType } from './actions';
+import { ShopAction, ShopActionType } from './actions';
 
-import { CartState } from './state';
+import { ShopState } from './state';
 
-export const shopReducer = (state: CartState, action: CartAction) => {
+export const shopReducer = (state: ShopState, action: ShopAction) => {
   switch (action.type) {
-    case CartActionType.ADD_TO_CART:
+    case ShopActionType.ADD_TO_CART:
       return {
         ...state,
-        products: action.payload,
+        cart_products: action.payload,
       };
 
-    case CartActionType.REMOVE_FROM_CART:
+    case ShopActionType.REMOVE_FROM_CART:
       return {
         ...state,
-        products: action.payload,
+        cart_products: action.payload,
       };
 
-    case CartActionType.UPDATE_TOTAL:
+    case ShopActionType.UPDATE_TOTAL:
     return {
         ...state,
         total: action.payload,
       };
 
+    case ShopActionType.ADD_TO_WISH:
+      return {
+        ...state,
+        wish_products: action.payload,
+      };
+      
+    case ShopActionType.REMOVE_FROM_WISH:
+      return {
+        ...state,
+        wish_products: action.payload,
+      };
     default:
       return state;
   }

@@ -1,29 +1,41 @@
 
 import { Product } from "../../models";
-import { CartState } from "./state";
+import { ShopState } from "./state";
 
-export enum CartActionType {
-    ADD_TO_CART = 'add',
-    REMOVE_FROM_CART = 'remove',
+export enum ShopActionType {
+    ADD_TO_CART = 'add_cart',
+    REMOVE_FROM_CART = 'remove_cart',
     UPDATE_TOTAL = 'update',
+    ADD_TO_WISH = 'add_wish',
+    REMOVE_FROM_WISH = 'remove_wish'
 }
   
-export type CartAction = {
-    type: CartActionType;
+export type ShopAction = {
+    type: ShopActionType;
     payload: any;
 };
   
-export const add = (product: Product): CartAction => ({
-    type: CartActionType.ADD_TO_CART,
-    payload: product,
+export const add_cart = (cart_products: Product): ShopAction => ({
+    type: ShopActionType.ADD_TO_CART,
+    payload: cart_products,
 });
   
-export const remove = (product: Product): CartAction => ({
-    type: CartActionType.REMOVE_FROM_CART,
-    payload: product,
+export const remove_cart = (cart_products: Product): ShopAction => ({
+    type: ShopActionType.REMOVE_FROM_CART,
+    payload: cart_products,
 });
 
-export const update = (total: number): CartAction => ({
-    type: CartActionType.UPDATE_TOTAL,
+export const update = (total: number): ShopAction => ({
+    type: ShopActionType.UPDATE_TOTAL,
     payload: total,
+});
+
+export const add_wish = (wish_products: Product): ShopAction => ({
+    type: ShopActionType.ADD_TO_WISH,
+    payload: wish_products,
+});
+
+export const remove_wish = (wish_products: Product): ShopAction => ({
+    type: ShopActionType.REMOVE_FROM_WISH,
+    payload: wish_products,
 });

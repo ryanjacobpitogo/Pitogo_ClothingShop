@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { CartState, initCartState } from '../reducer/shop';
+import { ShopState, initShopState } from '../reducer/shop';
 
-export const ShopContext = createContext<CartState>(initCartState);
+export const ShopContext = createContext<ShopState>(initShopState);
