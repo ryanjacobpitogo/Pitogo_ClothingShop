@@ -7,10 +7,12 @@ import {
   Wrapper,
 } from './ProductCard.styled';
 import { AiFillGift, AiOutlineGift } from "react-icons/ai";
+import { BsFillCartCheckFill, BsFillCartDashFill } from "react-icons/bs";
 
 import { Product } from '../../models';
 import { useEffect, useState } from 'react';
 import useShop from '../../contexts/shopProvider';
+
 
 export const ProductCard = ({ name, imageUrl, price, qty }: Product) => {
   const { cart_products, wish_products, addToCart, removeFromCart, addToWish, removeFromWish } = useShop();
@@ -32,7 +34,7 @@ export const ProductCard = ({ name, imageUrl, price, qty }: Product) => {
     
   };
   const handleWish = () => {
-    const product = { name, imageUrl, price };
+    const product = { name, imageUrl, price, qty };
 
     isInWish ? removeFromWish(product) : addToWish(product);
     
@@ -41,7 +43,7 @@ export const ProductCard = ({ name, imageUrl, price, qty }: Product) => {
   return (
     <Wrapper background={imageUrl}>
       <CartButton isInCart={isInCart} onClick={handleCart}>
-        <p>{isInCart ? '-' : '+'}</p>
+        <p>{isInCart ? <BsFillCartDashFill/> : <BsFillCartCheckFill/>}</p>
       </CartButton>
       <WishButton isInWish={isInWish} onClick={handleWish}>
         <p>{isInWish ? <AiFillGift/> : <AiOutlineGift/>}</p>

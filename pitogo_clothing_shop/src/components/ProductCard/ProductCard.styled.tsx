@@ -46,7 +46,7 @@ export const CartButton = styled.div<CartButtonProps>`
   }
 
   p {
-    font-size: 20px;
+    font-size: 16px;
     margin: 0;
     color: white;
   }
