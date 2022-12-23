@@ -1,3 +1,4 @@
+import { FaMinus, FaPlus } from 'react-icons/fa';
 import styled from 'styled-components';
 
 type WrapperProps = {
@@ -54,12 +55,13 @@ export const TextContainer = styled.div`
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
   width: 100%;
-  padding: 20px;
+  padding: 20px 20px 20px 0;
 `;
 
 export const Title = styled.p`
   font-weight: 500;
   font-style: normal;
+  padding-left: 0.7em;
   font-size: 24px;
   margin: 0;
   color: #ffffff;
@@ -68,6 +70,75 @@ export const Title = styled.p`
 export const SubTitle = styled.p`
   font-weight: normal;
   font-size: 15px;
+  padding-left: 1.2em;
   color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
+`;
+
+export const QuantityWrapper = styled.div`
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  width: 5em;
+  height: 2em;
+  border: 2px rgba(255, 255, 255, 0.8) solid;
+  padding: 0 1em 0 1em;
+  margin-left: 1em;
+  border-radius: 3em;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  transition: 0.3s;
+`;
+
+export const QuantityInput = styled.input`
+  font-size: 1em;
+  text-align: center;
+  background: none;
+  color: white;
+  font-weight:bold;
+  width: 100%;
+  border: none;
+
+  :focus{
+    border:none;
+    outline:none;
+  }
+  ::placeholder{
+    color: rgba(255, 255, 255, 1);
+  }
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
+export const PlusIcon = styled(FaPlus)`
+  font-size: 2em;
+  color: white;
+`;
+
+export const MinusIcon = styled(FaMinus)`
+  font-size: 2em;
+  color: white;
+`;
+
+export const Subtotal = styled.p`
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+`;
+export const SubtotalContainer = styled.div`
+  display: grid;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  width: 100%;
+  padding: 20px;
 `;

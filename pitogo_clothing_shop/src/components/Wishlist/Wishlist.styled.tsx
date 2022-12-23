@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Title = styled.p`
@@ -12,3 +13,26 @@ export const ProductsWrapper = styled.div`
   grid-template-columns: repeat(2, auto);
   gap: 20px;
 `;
+
+export const ButtonsWrapper = styled.div`
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ padding-top: 1.5em;
+`
+
+export const ClearLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  color: white;
+  background: #E55336;
+  border-radius: 3em;
+  padding: 1.5vw 3vw 1.5vw 3vw;
+  text-decoration-color: transparent;
+  :hover {
+    transform: scale(1.2);
+    background: #f03c18;
+    text-decoration-color: white;
+    transition: 1s;
+  }
+`

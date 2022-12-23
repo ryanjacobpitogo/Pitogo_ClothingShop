@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import useShop from "../../contexts/shopProvider";
 import { Product } from "../../models";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import {
     CartButton,
+    MinusIcon,
+    PlusIcon,
+    QuantityInput,
+    QuantityWrapper,
     SubTitle,
+    Subtotal,
+    SubtotalContainer,
     TextContainer,
     Title,
     Wrapper,
@@ -23,10 +30,6 @@ export const CartCard = ({ name, imageUrl, price, qty }: Product) => {
       const product = { name, imageUrl, price, qty };
       isInCart ? removeFromCart(product) : addToCart(product);
     };
-    
-    // const handleCheckout = () => {
-    //   const product = { name, imageUrl, price, tempQty };
-    // }
 
     const handleQty = (e: React.FormEvent<HTMLInputElement>) => {
       let temp = e.currentTarget.value;
@@ -37,6 +40,21 @@ export const CartCard = ({ name, imageUrl, price, qty }: Product) => {
       }
     }
     
+    const addQty = () => {
+      let temp = qty + 1;
+      const product = { name, imageUrl, price, temp};
+      updateCartQty(product);
+      console.log(qty);
+    }
+    
+    const subtQty = () => {
+      let temp;
+      qty - 1 === 0 ? temp = qty: temp = qty-1;
+      const product = { name, imageUrl, price, temp};
+      updateCartQty(product);
+      console.log(qty);
+    }
+
     return (
       <Wrapper background={imageUrl}>
         <CartButton isInCart={isInCart} onClick={handleCart}>
@@ -44,10 +62,14 @@ export const CartCard = ({ name, imageUrl, price, qty }: Product) => {
         </CartButton>
         <TextContainer>
           <Title>{name}</Title>
-          <SubTitle>{price}.00$</SubTitle>
+          <SubTitle>Unit Price: {price}.00$</SubTitle>
           <SubTitle>
             Qty: 
-            <input onChange= {handleQty} placeholder={`${qty}`} type="number" min="1"/> 
+            <QuantityWrapper>
+            <MinusIcon onClick={subtQty}/>
+            <QuantityInput onChange= {handleQty} placeholder={`${qty}`} type="number" min="1"/> 
+            <PlusIcon onClick={addQty}/>
+            </QuantityWrapper>
           </SubTitle>
         </TextContainer>
       </Wrapper>

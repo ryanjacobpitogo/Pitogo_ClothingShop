@@ -16,6 +16,12 @@ export const shopReducer = (state: ShopState, action: ShopAction) => {
         cart_products: action.payload,
       };
 
+    case ShopActionType.CLEAR_CART:
+      return {
+        ...state,
+        cart_products: action.payload,
+      };
+
     case ShopActionType.UPDATE_CART_QTY:
       return {
         ...state,
@@ -39,17 +45,23 @@ export const shopReducer = (state: ShopState, action: ShopAction) => {
         ...state,
         wish_products: action.payload,
       };
+
+    case ShopActionType.CLEAR_WISH:
+      return {
+        ...state,
+        wish_products: action.payload,
+      };
     
     case ShopActionType.ADD_TO_CHECKOUT:
       return {
         ...state,
-        checkout_products: action.payload,
+        showCheckout: action.payload,
       };
       
     case ShopActionType.CLEAR_CHECKOUT:
       return {
         ...state,
-        checkout_products: action.payload,
+        showCheckout: action.payload,
       };
 
     default:

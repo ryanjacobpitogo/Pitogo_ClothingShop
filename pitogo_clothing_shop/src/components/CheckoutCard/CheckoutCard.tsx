@@ -4,6 +4,8 @@ import { Product } from "../../models";
 import {
     CartButton,
     SubTitle,
+    Subtotal,
+    SubtotalContainer,
     TextContainer,
     Title,
     Wrapper,
@@ -23,13 +25,17 @@ export const CheckoutCard = ({ name, imageUrl, price, qty }: Product) => {
     
     return (
       <Wrapper background={imageUrl}>
-        <TextContainer>
+        <TextContainer qty={qty}>
           <Title>{name}</Title>
-          <SubTitle>{price}.00$</SubTitle>
+          <SubTitle>Unit Price: {price}.00$</SubTitle>
           <SubTitle>
-            Qty: 
-            {qty} 
+            Qty: {qty} 
           </SubTitle>
+          {qty > 1 ?
+          <SubtotalContainer>
+            <Subtotal> Subtotal: {price * qty}.00$</Subtotal>
+          </SubtotalContainer>
+          : <></> }
         </TextContainer>
       </Wrapper>
     );

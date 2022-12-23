@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useShop from '../../contexts/shopProvider';
 import { CartCard } from '../CartCard';
-import { ProductsWrapper, Title } from './Cart.styled';
+import { ButtonsWrapper, CheckoutLink, ClearLink, ProductsWrapper, Title } from './Cart.styled';
 
 
 export const Cart = () => {
-  const { cart_products, total } = useShop();
+  const { cart_products, checkout_products, clearCart, total, addToCheckout } = useShop();
 
   const handleCheckout = () => {
     
   }
+
 
   return (
     <>
@@ -19,8 +21,15 @@ export const Cart = () => {
           <CartCard {...product} key={index}/>
         ))}
       </ProductsWrapper>
-      <button onClick={handleCheckout}>CHECKOUT</button>
-      <button>CLEAR CART</button>
+      {
+        cart_products.length ?
+        <ButtonsWrapper>
+          <CheckoutLink to='/checkout' onClick={() => addToCheckout()}>CHECKOUT</CheckoutLink>
+          <ClearLink to='/' onClick={() => clearCart()}>CLEAR CART</ClearLink>
+        </ButtonsWrapper>
+        :
+        <></>
+      }
     </>
   );
 };
