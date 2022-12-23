@@ -1,6 +1,6 @@
 import { ShopContext } from './shopContext';
-import { useContext, useReducer } from 'react';
-import { add_cart, ShopActionType, remove_cart, initShopState, update, shopReducer, add_wish, remove_wish } from '../reducer/shop';
+import { useContext, useEffect, useReducer } from 'react';
+import { add_cart, remove_cart, initShopState, update, shopReducer, add_wish, remove_wish, update_cart_qty } from '../reducer/shop';
 import { Product } from '../models';
 
 type ShopProviderProps = {
@@ -9,7 +9,10 @@ type ShopProviderProps = {
 
 export const ShopProvider = ( props : ShopProviderProps ) => {
     const [state, dispatch] = useReducer(shopReducer, initShopState);
-  
+    
+    useEffect(() => {
+    }, [state.total])
+    
     const addToCart = (product: Product) => {
       const updatedCart = state.cart_products.concat(product);
       updatePrice(updatedCart);
@@ -25,6 +28,14 @@ export const ShopProvider = ( props : ShopProviderProps ) => {
       
       dispatch(remove_cart(updatedCart));
     };
+
+    const updateCartQty = (product: any) => {
+      const updatedCart = state.cart_products.map(
+        (item: any) => item.name === product.name ? {...item, qty: product.temp} : item
+        );
+      dispatch(update_cart_qty(updatedCart));
+      updatePrice(updatedCart);
+    }
   
     const updatePrice = (products: [] = []) => {
       let total = 0;
@@ -52,9 +63,11 @@ export const ShopProvider = ( props : ShopProviderProps ) => {
     const value = {
       cart_products: state.cart_products,
       wish_products: state.wish_products,
+      checkout_products: state.checkout_products,
       total: state.total,
       addToCart,
       removeFromCart,
+      updateCartQty,
       addToWish,
       removeFromWish
     };
