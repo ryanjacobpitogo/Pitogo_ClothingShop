@@ -7,7 +7,7 @@ export const Wishlist = () => {
     const { wish_products, clearWish } = useShop();
     return (
       <>
-        <Title> {!wish_products.length ? "Wishlist is empty" : "Wishlist"} </Title>
+        <Title> {!wish_products.length ? "Wishlist is empty" : "Your Wishlist"} </Title>
         <ProductsWrapper>
           {wish_products.map((product, index) => (
             <WishCard {...product} key={index}/>
