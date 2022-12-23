@@ -19,7 +19,7 @@ export const Checkout = () => {
         {
         showCheckout ?
         <ButtonsWrapper>
-          <OrderLink to='/' onClick={() => clearCart()}>ORDER</OrderLink>
+          <OrderLink to='/' onClick={() => {clearCart(); clearCheckout();}}>ORDER</OrderLink>
           <CancelLink to='/cart' onClick={() => clearCheckout()}>CANCEL</CancelLink>
         </ButtonsWrapper>
         :
