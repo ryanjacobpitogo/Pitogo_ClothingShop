@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import useShop from "../../contexts/shopProvider";
-import { clear_cart } from "../../reducer/shop";
 import { CheckoutCard } from "../CheckoutCard";
 import { ProductsWrapper, Title, ButtonsWrapper, OrderLink, CancelLink } from './Checkout.styled';
 

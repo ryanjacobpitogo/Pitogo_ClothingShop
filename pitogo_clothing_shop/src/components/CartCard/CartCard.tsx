@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useShop from "../../contexts/shopProvider";
 import { Product } from "../../models";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import {
     CartButton,
     MinusIcon,
@@ -9,8 +8,6 @@ import {
     QuantityInput,
     QuantityWrapper,
     SubTitle,
-    Subtotal,
-    SubtotalContainer,
     TextContainer,
     Title,
     Wrapper,
@@ -36,7 +33,6 @@ export const CartCard = ({ name, imageUrl, price, qty }: Product) => {
       if(!isNaN(parseInt(temp)) && parseInt(temp) > 0){
         const product = { name, imageUrl, price, temp};
         updateCartQty(product);
-        console.log(qty);
       }
     }
     
@@ -44,7 +40,6 @@ export const CartCard = ({ name, imageUrl, price, qty }: Product) => {
       let temp = qty + 1;
       const product = { name, imageUrl, price, temp};
       updateCartQty(product);
-      console.log(qty);
     }
     
     const subtQty = () => {
@@ -52,7 +47,6 @@ export const CartCard = ({ name, imageUrl, price, qty }: Product) => {
       qty - 1 === 0 ? temp = qty: temp = qty-1;
       const product = { name, imageUrl, price, temp};
       updateCartQty(product);
-      console.log(qty);
     }
 
     return (

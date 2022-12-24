@@ -1,11 +1,9 @@
-import { Products } from "../../components/Products";
 import { Product } from "../../models";
 
 
 export type ShopState = {
     cart_products: Product[];
     wish_products: Product[];
-    checkout_products: Product[];
     showCheckout: boolean;
     total: number;
     addToCart: any;
@@ -22,7 +20,6 @@ export type ShopState = {
 export const initShopState = {
     cart_products: [],
     wish_products: [],
-    checkout_products: [],
     showCheckout: false,
     total: 0,
     addToCart: null,

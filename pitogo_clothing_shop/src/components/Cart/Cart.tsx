@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import useShop from '../../contexts/shopProvider';
 import { CartCard } from '../CartCard';
 import { ButtonsWrapper, CheckoutLink, ClearLink, ProductsWrapper, Title } from './Cart.styled';
 
 
 export const Cart = () => {
-  const { cart_products, checkout_products, clearCart, total, addToCheckout } = useShop();
-
-  const handleCheckout = () => {
-    
-  }
-
+  const { cart_products, clearCart, total, addToCheckout } = useShop();
 
   return (
     <>

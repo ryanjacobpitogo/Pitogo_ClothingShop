@@ -45,8 +45,7 @@ export const ShopProvider = ( props : ShopProviderProps ) => {
     const updatePrice = (products: [] = []) => {
       let total = 0;
       products.forEach((product: Product) => total += product.price * product.qty);
-      console.log("totes",total);
-
+      
       dispatch(update(total));
     };
 
@@ -79,7 +78,6 @@ export const ShopProvider = ( props : ShopProviderProps ) => {
     const value = {
       cart_products: state.cart_products,
       wish_products: state.wish_products,
-      checkout_products: state.checkout_products,
       showCheckout: state.showCheckout,
       total: state.total,
       addToCart,

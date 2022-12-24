@@ -33,11 +33,11 @@ export const ProductCard = ({ name, imageUrl, price, qty }: Product) => {
     isInCart ? removeFromCart(product) : addToCart(product);
     
   };
+  
   const handleWish = () => {
     const product = { name, imageUrl, price, qty };
 
     isInWish ? removeFromWish(product) : addToWish(product);
-    
   };
   
   return (

@@ -1,7 +1,5 @@
 
 import { Product } from "../../models";
-import { ShopState } from "./state";
-
 
 export enum ShopActionType {
     ADD_TO_CART = 'add_cart',
